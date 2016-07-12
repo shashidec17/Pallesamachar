@@ -1,0 +1,48 @@
+<div ui-content-for="menu-action">  
+    <div class="btn sidebar-toggle">
+        <a  ng-click="goBack();" style="color: #fff;"><i class="fa fa-arrow-left"></i></a>
+  </div>
+</div>
+<div ui-content-for="navbarAction">
+    <div ui-toggle="uiSidebarRight" class="btn">
+        <a ng-click="addEmployee()" style="color: #fff;"class="btn"><i class="fa fa-plus"></i></a>
+    </div>
+</div>
+
+<div ui-content-for="title">
+    <span>Employee List</span>
+</div>
+
+<div class="scrollable">
+    <div class="scrollable-content scrolable_content_bg" style="background: #fafafa;">
+        <div class="list-group">
+
+            <ul class="list-group">
+                <li ng-repeat="group in employeesList">
+                    <div style="background: #f2f2f2; padding-left: 10px;font-weight:bold; padding-bottom:5px; padding-top :5px;">{{group.label}}</div>
+
+                    <ul class="list-group">
+                        <li ng-repeat="employee in group.items" class="list-group-item" 
+                            style="margin-top: 10px; margin-left: 10px; margin-right: 10px; background: #fff;border: 2px #EBEBEB solid;border-radius: 5px;" ng-click="viewEmployee(employee)">
+                            <table>
+                                <tr>
+                                    <td style="width: 10%;">
+                                        <img src="{{employee.profile_pic}}" 
+                                            style="    height: 40px;    width: 40px; background-color: #aaa; border-radius: 50%;"/>
+                                        
+                                    </td>
+                                    <td style="width: 80%;">
+                                        <div><strong>{{employee.firstName}}</strong></div>
+                                        <div style="color:#c7c7c7; font-size:12px;">{{employee.roleName}}</div>
+                                    </td>
+                                    <td style="width: 10%; color:#c7c7c7;"><i class="fa fa-arrow-right pull-right"></td>
+                                </tr>
+                            </table>
+
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
