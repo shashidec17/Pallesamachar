@@ -8,21 +8,8 @@
     },
     "installed_plugins": {
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "zebranot.com"
-        },
-        "cordova-plugin-camera": {
-            "PACKAGE_NAME": "zebranot.com"
-        },
-        "cordova-plugin-file": {
-            "PACKAGE_NAME": "zebranot.com"
-        },
-        "cordova-plugin-file-transfer": {
-            "PACKAGE_NAME": "zebranot.com"
+            "PACKAGE_NAME": "com.pallesamachar"
         }
     },
-    "dependent_plugins": {
-        "cordova-plugin-compat": {
-            "PACKAGE_NAME": "zebranot.com"
-        }
-    }
+    "dependent_plugins": {}
 }
