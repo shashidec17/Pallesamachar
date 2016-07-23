@@ -53,6 +53,31 @@
     <script src="cordova.js"></script>
 
     <script src="samachar/checklist-model.js"></script>
+    <style>
+        body
+        {
+            font-family: "Geneva";
+            font-size: 20px;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: 100;
+        }
+
+        .headerApp
+        {
+            font-family: Geneva, Tahoma, Verdana, sans-serif;
+            font-size: 20px;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: 300;
+            /* line-height: 26.4px; */
+        }
+
+        .app-name
+        {
+            line-height: 50px !important;
+        }
+    </style>
 
 </head>
 
@@ -87,13 +112,14 @@
 
         <!-- Navbars -->
         <div class="navbar navbar-app navbar-absolute-top action_bar_bg">
-            <div class="navbar-brand navbar-brand-center" ui-yield-to="title">
-                Mobile Angular UI
-            </div>
+
             <div class="btn-group pull-left" ui-yield-to="menu-action">
                 <div ui-toggle="uiSidebarLeft" class="btn sidebar-toggle">
                     <i class="fa fa-bars"></i>
                 </div>
+            </div>
+            <div class="navbar-brand navbar-brand-left headerApp" ui-yield-to="title">
+                Mobile Angular UI
             </div>
             <div class="btn-group pull-right" ui-yield-to="navbarAction">
                 <div ui-toggle="uiSidebarRight" class="btn">
