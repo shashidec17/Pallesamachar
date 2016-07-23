@@ -5,8 +5,8 @@ angular.module('samachar.mobile.services').factory('WebServices', function ($htt
       
       var _getUrl = function(url){
       
-      	  var host = "http://localhost:1111/app";
-          //var host = "https://samachar.com";
+      	  var host = "http://localhost:4321/app";
+          //var host = "https://mytomcatapp-pallesamachar.rhcloud.com";
     	   var urls = {
             get_districts: "psnews/rest/distMandalService/getDistricts",
 			      get_news_by_district: "psnews/rest/NewsService/getNewsByDist",

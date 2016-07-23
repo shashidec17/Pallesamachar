@@ -11,7 +11,9 @@ app.controller('MandalController', function ($rootScope, $scope, $state,$statePa
             data: {
                     "districtId":distMandalInfo.districtData.districtId,
                     "mandalId":distMandalInfo.mandalData.mandalId,
-                    "pageIndex":pageIndex
+                    "mandalName":distMandalInfo.mandalData.mandalName,
+                    "newsIndex":pageIndex,
+                    "perPage":10
                 },
         }).then(function (response) {
             if(response.data.statusCode == 200){
@@ -51,8 +53,9 @@ app.controller('DistrictController', function ($rootScope, $scope, $state,$state
             data: {
                     "districtId":distMandalInfo.districtData.districtId,
                     "districtName":distMandalInfo.districtData.districtName,
-                    "mandalsList":[distMandalInfo.mandalData],
-                    "pageIndex":pageIndex
+                    //"mandalsList":[distMandalInfo.mandalData],
+                    "newsIndex":pageIndex,
+                    "perPage":10
                 },
         }).then(function (response) {
             if(response.data.statusCode == 200){

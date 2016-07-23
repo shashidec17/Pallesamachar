@@ -4,7 +4,7 @@ var express = require('express'),
 
 var path = __dirname.substring(0, __dirname.lastIndexOf("/")) + "/public";
 var docroot = path; //isProd ? __dirname + "../build" : path; //__dirname + "./public";
-var port = 1111;
+var port = 4321;
 
 var app = express();
 app.use(express.cookieParser());
@@ -16,11 +16,11 @@ var routingProxy = new httpProxy.RoutingProxy();
 app.use('/app', function (req, res) {
 
   var options = {
-	  host : "localhost",
-	  port : parseInt("8080"),
+	  host : "mytomcatapp-pallesamachar.rhcloud.com",
+	  port : parseInt("443"),
     changeOrigin: true,
     target : {
-	   https : false
+	   https : true
     }
   };
   var debugUrl = req.protocol + "://" + options.host + (options.port ? ":" + options.port : "") +  req.url;
