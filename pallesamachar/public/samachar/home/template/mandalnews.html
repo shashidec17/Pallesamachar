@@ -16,37 +16,33 @@
 </div>
 
 
-<div class="scrollable">
-    <div class="scrollable-content scrolable_content_bg" style="background: #FFF;">
-        <div class="list-group">
+<div class="scrollable" >
 
-            <ul class="list-group">
-                <li>
-                    <ul class="list-group">
+    <div id="list-wrapper" class="scrollable-content scrolable_content_bg" style="background: #FFF;" >
 
-                         <li ng-repeat="news in newsList" class="list-group-item" 
-                            style="margin-left: 10px; margin-right: 10px; background: #F5F6FA;border: 1px #EBEBEB solid;"
-                            ng-click="viewNews(news)">
-                            <table>
-                                <tr>
-                                    <td style="width: 30%;">
-                                         <img ng-src="https://mytomcatapp-pallesamachar.rhcloud.com/psnews/uploads/news{{news.newsId}}.jpeg"
-                                              style="height: 70px;width: 100px; background-color: #aaa;"/>
-                                
-                                    </td>
-                                     <td style="width: 5%;">
-                                    </td>
-                                    <td style="width: 65%;">
-                                       <div style="position: absolute;top: 10px; font-size:small;"><strong>{{news.newsName}}</strong></div>
-                                        <div style="color:#c7c7c7; position: absolute;bottom: 10px;font-size:12px;">{{news.createdDate}}</div>
-                                    </td>
-                                    
-                                </tr>
-                            </table>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+        <ul class="list-group" infinite-scroll='nextPage()' infinite-scroll-container="'#list-wrapper'" >
+
+             <li ng-repeat="news in newsList" class="list-group-item" 
+                style="margin-left: 10px; margin-right: 10px; background: #F5F6FA;border: 1px #EBEBEB solid;"
+                ng-click="viewNews(news)">
+                <table>
+                    <tr>
+                        <td style="width: 30%;">
+                             <img ng-src="https://mytomcatapp-pallesamachar.rhcloud.com/psnews/uploads/news{{news.newsId}}.jpeg"
+                                  style="height: 70px;width: 100px; background-color: #aaa;"/>
+                    
+                        </td>
+                         <td style="width: 5%;">
+                        </td>
+                        <td style="width: 65%;">
+                           <div style="position: absolute;top: 10px; font-size:small;"><strong>{{news.newsName}}</strong></div>
+                            <div style="color:#c7c7c7; position: absolute;bottom: 10px;font-size:12px;">{{news.createdDate}}</div>
+                        </td>
+                        
+                    </tr>
+                </table>
+            </li>
+        </ul>
+ 
     </div>
 </div>

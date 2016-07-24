@@ -1,5 +1,5 @@
 angular.module('samachar.mobile.services', []);
-var app = angular.module('samacharApp', ['ui.router', 'mobile-angular-ui',
+var app = angular.module('samacharApp', ['ui.router', 'mobile-angular-ui', 'infinite-scroll',
   'mobile-angular-ui.gestures', 'ngCookies', 'samachar.mobile.services', 'checklist-model', 'ui.bootstrap'
 ]);
 

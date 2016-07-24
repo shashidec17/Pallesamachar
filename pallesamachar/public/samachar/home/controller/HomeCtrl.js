@@ -1,11 +1,13 @@
-app.controller('MandalController', function ($rootScope, $scope, $state,$stateParams, WebServices, StorageService) {
+app.controller('MandalController', function ($rootScope, $scope, $state,$stateParams, WebServices, StorageService, $timeout) {
 
     var distMandalInfo = StorageService.getUserInfo('user_info');
     $scope.mandalName = distMandalInfo.mandalData.mandalName;
    var perPage = 10;
+   $scope.currentPage = 0;
+   $scope.newsList = [];
+   $scope.totalNews = 0;
 
-    var mandalWise = function(){
-        var pageIndex = 0;
+   var fetchNews = function(currentPage){
         $rootScope.loading = true;
         WebServices.api({
             method: "POST",
@@ -14,13 +16,16 @@ app.controller('MandalController', function ($rootScope, $scope, $state,$statePa
                     "districtId":distMandalInfo.districtData.districtId,
                     "mandalId":distMandalInfo.mandalData.mandalId,
                     "mandalName":distMandalInfo.mandalData.mandalName,
-                    "newsIndex":pageIndex,
+                    "newsIndex":currentPage,
                     "perPage":perPage
                 }
         }).then(function (response) {
             if(response.data.statusCode == 200){
-                $scope.newsList = response.data.newsList;
-               
+                $scope.totalNews = response.data.totalNews;
+                angular.forEach(response.data.newsList, function(value, index){
+                    $scope.newsList.push(value);
+                });
+                
             }else{
                 console.log("error in  news");
             }
@@ -29,19 +34,20 @@ app.controller('MandalController', function ($rootScope, $scope, $state,$statePa
             $scope.incorrectCredentials = true;
             $rootScope.loading = false;
         });
-    }
+   };
+   
+   $scope.nextPage = function(){
+        if($scope.newsList.length < $scope.totalNews){
+            fetchNews(++$scope.currentPage);
+        }
+   };
 
-
-    mandalWise();
+   fetchNews(0);
 
     $scope.viewNews = function(news){
-
         StorageService.setNewsInfo(news);
         $state.go("viewNews");
-
     }
-
-
 });
 
 
@@ -54,9 +60,12 @@ app.controller('DistrictController', function ($rootScope, $scope, $state,$state
     $scope.districtName = distMandalInfo.districtData.districtName;
 
     var perPage = 10;
+    $scope.currentPage = 0;
+   $scope.newsList = [];
+   $scope.totalNews = 0;
 
-    var districtWise = function(){
-        var pageIndex = 0;
+   var fetchNews = function(currentPage){
+        $rootScope.loading = true;
         $rootScope.loading = true;
         WebServices.api({
             method: "POST",
@@ -64,12 +73,15 @@ app.controller('DistrictController', function ($rootScope, $scope, $state,$state
             data: {
                     "districtId":distMandalInfo.districtData.districtId,
                     "districtName":distMandalInfo.districtData.districtName,
-                    "newsIndex":pageIndex,
+                    "newsIndex":currentPage,
                     "perPage":perPage
                 },
         }).then(function (response) {
             if(response.data.statusCode == 200){
-                $scope.newsList = response.data.newsList;
+                $scope.totalNews = response.data.totalNews;
+                angular.forEach(response.data.newsList, function(value, index){
+                    $scope.newsList.push(value);
+                });
               
             }else{
                 console.log("error in  news");
@@ -79,9 +91,16 @@ app.controller('DistrictController', function ($rootScope, $scope, $state,$state
             $scope.incorrectCredentials = true;
             $rootScope.loading = false;
         });
-    }
+       
+   };
 
-    districtWise();
+   $scope.nextPage = function(){
+        if($scope.newsList.length < $scope.totalNews){
+            fetchNews(++$scope.currentPage);
+        }
+   };
+
+   fetchNews(0);
 
      $scope.viewNews = function(news){
 
