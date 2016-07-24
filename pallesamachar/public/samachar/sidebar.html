@@ -19,8 +19,10 @@
 
     <div class="scrollable-content scrolable_content_bg" style="background-color:#304050;">
         <div class="list-group" ui-turn-off='uiSidebarLeft' style="font-size: large;">
-            <a class="list-group-item"  style="color:#FFF;background-color:#304050; border-bottom:0px;"  ng-click="districtNews()"><i class="fa fa-tasks fa-navbar"></i> District Wise</a>
-            <a class="list-group-item" style="color:#FFF;background-color:#304050;border-bottom:0px;" ng-click="mandalNews()"><i class="fa fa-list fa-navbar"></i> Constitution Wise</a>
+            <a class="list-group-item"  style="color:#FFF;background-color:#304050; border-bottom:0px;"  ng-click="districtNews()"><i class="fa fa-tasks fa-navbar"></i> {{districtName}} News</a>
+            <a class="list-group-item" style="color:#FFF;background-color:#304050;border-bottom:0px;" ng-click="mandalNews()"><i class="fa fa-list fa-navbar"></i> {{mandalName}} News</a>
+            <a class="list-group-item" style="color:#FFF;background-color:#304050;border-bottom:0px;" ui-sref="login"><i class="fa fa-list fa-navbar"></i> Change District & Constitution </a>
+             <a class="list-group-item" style="color:#FFF;background-color:#304050;border-bottom:0px;"><i class="fa fa-list fa-navbar"></i> Help </a>
         </div>
     </div>
 </div>

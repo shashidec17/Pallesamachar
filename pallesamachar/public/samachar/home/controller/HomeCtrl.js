@@ -1,7 +1,7 @@
 app.controller('MandalController', function ($rootScope, $scope, $state,$stateParams, WebServices, StorageService) {
 
     var distMandalInfo = StorageService.getUserInfo('user_info');
-   
+    $scope.mandalName = distMandalInfo.mandalData.mandalName;
    var perPage = 10;
 
     var mandalWise = function(){
@@ -51,6 +51,7 @@ app.controller('MandalController', function ($rootScope, $scope, $state,$statePa
 app.controller('DistrictController', function ($rootScope, $scope, $state,$stateParams, WebServices, StorageService) {
 
     var distMandalInfo = StorageService.getUserInfo('user_info');
+    $scope.districtName = distMandalInfo.districtData.districtName;
 
     var perPage = 10;
 
@@ -98,7 +99,7 @@ app.controller('DistrictController', function ($rootScope, $scope, $state,$state
 
 app.controller('viewNewsController', function ($rootScope, $scope, $state,$stateParams, WebServices, StorageService) {
 
-    var newsInfo = StorageService.getUserInfo('news_info');
+    var newsInfo = StorageService.getNewsInfo('news_info');
     $scope.viewNews = {};
     var viewNews = function(){
        

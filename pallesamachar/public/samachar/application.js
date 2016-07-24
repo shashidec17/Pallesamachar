@@ -55,6 +55,11 @@ app.controller('MainController', function ($rootScope, $scope, $state, WebServic
             return false;
         }
         StorageService.setUserInfo($scope.loginFormData);
+        //This is for side menu once navigate to news page
+         var distMandalInfo = StorageService.getUserInfo('user_info');
+        $scope.mandalName = distMandalInfo.mandalData.mandalName;
+        $scope.districtName = distMandalInfo.districtData.districtName;
+
         $scope.mandalNews();
 
     };
