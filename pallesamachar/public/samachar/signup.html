@@ -1,0 +1,78 @@
+
+<div class="scrollable">  
+  <div class="scrollable-content">
+    <div style="margin: 0px auto 15px; text-align: center;">
+         <img src="/libs/mobile-angular-ui/logo.png" />
+    </div>
+    <div class="list-group" style="margin-left: 20px; margin-right: 20px" ng-controller="SignupController">
+    	<form name="signupFrom"  novalidate>
+
+    		<div>
+
+    			<div ng-show="incorrectCredentials"><p style="color:#f00;">{{incorrectCredentials}}</p></div>
+
+    			<!-- First name -->
+    			<input type="text" name="firstName" ng-model="signupFormData.firstName" style="height: 40px; width: 49%; margin-top: 10px;" placeholder="First name" required ng-class="{submitted:isSubmitted}" />
+              	<!--<label ng-show="signupFrom.firstName.$touched && signupFrom.firstName.$error.required" style="width: 100%;  margin-top: 5px;">Enter First Name</label>-->
+
+              	<!-- Last name -->
+    			<input type="text" name="lastName" ng-model="signupFormData.lastName" style="height: 40px; width: 49%; margin-top: 10px;" placeholder="Last name" required ng-class="{submitted:isSubmitted}"/>
+              <!--	<label ng-show="signupFrom.lastName.$touched && signupFrom.lastName.$error.required" style="width: 100%;  margin-top: 5px;">Enter Last Name</label>-->
+
+              	<!-- Company -->
+    			<input type="text" name="company" required="" ng-model="signupFormData.company" style="height: 40px; width: 100%; margin-top: 10px;" placeholder="Company" required ng-class="{submitted:isSubmitted}"/>
+              <!--	<label ng-show="signupFrom.company.$touched && signupFrom.company.$error.required" style="width: 100%;  margin-top: 5px;">Enter Comapnay</label>-->
+
+
+              	<!-- Company Type -->
+    			<input type="text" name="companyType" ng-model="signupFormData.companyType" style="height: 40px; width: 100%; margin-top: 10px;" placeholder="Company Type" required ng-class="{submitted:isSubmitted}"/>
+              	<!--<label ng-show="signupFrom.companyType.$touched && signupFrom.companyType.$error.required" style="width: 100%;  margin-top: 5px;">Enter Last Name</label>-->
+
+              	<!-- Job Title -->
+    			<input type="text" name="jobTitle" ng-model="signupFormData.jobTitle" style="height: 40px; width: 100%; margin-top: 10px;" placeholder="Job Title" required ng-class="{submitted:isSubmitted}"/>
+              	<!--<label ng-show="signupFrom.jobTitle.$touched && signupFrom.jobTitle.$error.required" style="width: 100%;  margin-top: 5px;">Enter Last Name</label>-->
+
+
+              	<!-- Email -->
+              	<input type="text" name="text" ng-model="signupFormData.email" style="height: 40px; width: 100%; margin-top: 10px;" placeholder="Email Address" required ng-pattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/'
+                ng-class="{submitted:isSubmitted}"/>
+              	<!--<label  ng-show="signupFrom.email.$touched && signupFrom.email.$error.required" style="width: 100%;  margin-top: 5px;">Enter Email Address</label>-->
+
+          <select  name="phonecode" ng-model="signupFormData.phoneCode" style="height: 40px; width: 19%; margin-top: 10px;"
+              ng-options="code.phonecode as code.phonecode for code in mobileCodeList"            
+              required ng-class="{submitted:isSubmitted}" >       
+            </select>
+
+              	<!-- Phone -->
+    			<input type="number" name="phone" ng-model="signupFormData.phone" style="height: 40px; width: 79%; margin-top: 10px;" placeholder="Mobile Number" required ng-class="{submitted:isSubmitted}"/>
+              	<!--label ng-show="signupFrom.phone.$touched && signupFrom.phone.$error.required" style="width: 100%;  margin-top: 5px;">Enter Phone number</label>-->
+
+              	<!-- Number of People -->
+    			<input type="text" name="noOfPeople" ng-model="signupFormData.noOfPeople" style="height: 40px; width: 100%; margin-top: 10px;" placeholder="Number of People" ng-class="{submitted:isSubmitted}" />
+              	<!--<label ng-show="signupFrom.noOfPeople.$touched && signupFrom.noOfPeople.$error.required" style="width: 100%;  margin-top: 5px;">Enter Number of People</label>-->
+
+              	<!-- Message -->
+    			<input type="text" name="message" ng-model="signupFormData.message" style="height: 40px; width: 100%; margin-top: 10px;" placeholder="Message" required ng-class="{submitted:isSubmitted}"/>
+              	<!--<label ng-show="signupFrom.message.$touched && signupFrom.message.$error.required" style="width: 100%;  margin-top: 5px;">Enter Message</label>-->
+
+
+              	<!-- Password -->
+              	<input type="password" name="password" ng-model="signupFormData.password" style="height: 40px; width: 100%; margin-top: 10px;" placeholder="Password" required ng-minlength="8" ng-class="{submitted:isSubmitted}"/>
+              <!--	<label  ng-show="signupFrom.password.$touched && signupFrom.password.$error.required" style="width: 100%;  margin-top: 5px;">Enter Password</label>-->
+
+              	<!-- Confirm Password -->
+              	<input type="password" name="password" ng-model="signupFormData.confirmPassword" style="height: 40px; width: 100%; margin-top: 10px;" placeholder="Confirm Password" required ng-class="{submitted:isSubmitted}"/>
+              	<label ng-show="!signupFrom.password.$error.required && signupFormData.password !== signupFormData.confirmPassword" style="width: 100%;  margin-top: 5px;color:#f00">Enter Password or should match with password</label>
+              	
+
+              	 <button style="height: 40px; width: 100%; margin-bottom: 10px; margin-top: 10px;" ng-click="signup(signupFrom)">START TRIAL</button>
+
+              	 <div>Already Have An Accout? <b ng-click="changStateTo('login')">Sign in!</b></div>
+            	
+           
+          </div>
+
+	    </form>
+    </div>
+  </div>
+</div>

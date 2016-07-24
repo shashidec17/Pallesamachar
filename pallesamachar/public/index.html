@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+
+<html id="ng-app" xmlns:ng="https://angularjs.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <title>Mobile Angular UI Demo</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="yes" />
+
+    <link rel="stylesheet" href="libs/mobile-angular-ui/dist/css/mobile-angular-ui-hover.min.css" />
+    <link rel="stylesheet" href="libs/mobile-angular-ui/dist/css/mobile-angular-ui-base.css" />
+    <link rel="stylesheet" href="libs/mobile-angular-ui/dist/css/mobile-angular-ui-desktop.min.css" />
+    <link rel="stylesheet" href="samachar/demo.css" />
+    <script src="libs/angular-1.4.9/angular.min.js"></script>
+    <script src="libs/angular-1.4.9/angular-route.min.js"></script>
+    <script src="libs/angular-ui-router-0.2.15/release/angular-ui-router.js"></script>
+    <script src="libs/mobile-angular-ui/dist/js/mobile-angular-ui.min.js"></script>
+    <!-- Required to use $touch, $swipe, $drag and $translate services -->
+    <script src="libs/mobile-angular-ui/dist/js/mobile-angular-ui.gestures.min.js"></script>
+    <script src="libs/angular-cookies/angular-cookies.min.js"></script>
+    <script src="libs/ui-bootstrap/ui-bootstrap-tpls-1.3.3.js"></script>
+
+    <script src="samachar/application.js"></script>
+    <script src="samachar/web_services.js"></script>
+    <script src="samachar/storage_service.js"></script>
+
+     <script src="samachar/home/controller/HomeCtrl.js"></script>
+    <script src="samachar/home/Home.js"></script> 
+
+    <script src="../cordova.js"></script>
+
+    <script src="samachar/checklist-model.js"></script>
+    <style>
+        body
+        {
+            font-family: "Geneva";
+            font-size: 20px;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: 100;
+        }
+
+        .headerApp
+        {
+            font-family: Geneva, Tahoma, Verdana, sans-serif;
+            font-size: 20px;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: 300;
+            /* line-height: 26.4px; */
+        }
+
+        .app-name
+        {
+            line-height: 50px !important;
+        }
+    </style>
+
+</head>
+
+
+
+<body ng-app="samacharApp" ng-controller="MainController" ui-prevent-touchmove-defaults>
+    <div ng-show="!showMenu" ng-switch="currentState">
+        <div ng-switch-when="launch">
+            <div ng-include="'samachar/launch.html'"></div>
+        </div>
+        <div ng-switch-when="login">
+            <div ng-include="'samachar/login.html'"></div>
+        </div>
+        <div ng-switch-when="signup">
+            <div ng-include="'samachar/signup.html'"></div>
+        </div>
+        <div ng-switch-when="forgot_password">
+            <div ng-include="'samachar/forgot_password.html'"></div>
+        </div>
+    </div>
+
+
+    <!-- Sidebars -->
+    <div ng-include="'samachar/sidebar.html'"
+        ui-track-as-search-param='true'
+        class="sidebar sidebar-left" ng-show="showMenu">
+    </div>
+
+    <div class="app"
+        ui-swipe-right='Ui.turnOn("uiSidebarLeft")'
+        ui-swipe-left='Ui.turnOff("uiSidebarLeft")' ng-show="showMenu">
+
+        <!-- Navbars -->
+        <div class="navbar navbar-app navbar-absolute-top action_bar_bg">
+
+            <div class="btn-group pull-left" ui-yield-to="menu-action">
+                <div ui-toggle="uiSidebarLeft" class="btn sidebar-toggle">
+                    <i class="fa fa-bars"></i>
+                </div>
+            </div>
+            <div class="navbar-brand navbar-brand-left headerApp" ui-yield-to="title">
+                Mobile Angular UI
+            </div>
+            <div class="btn-group pull-right" ui-yield-to="navbarAction">
+                <div ui-toggle="uiSidebarRight" class="btn">
+                    <a ui-turn-on="modal2" class="btn"></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- App Body -->
+        <div class="app-body" ng-class="{loading: loading}">
+            <div ng-show="loading" class="app-content-loading">
+                <i class="fa fa-spinner fa-spin loading-spinner"></i>
+            </div>
+            <div class="app-content">
+                <ui-view></ui-view>
+            </div>
+        </div>
+
+    </div>
+    <!-- ~ .app -->
+    <div ui-yield-to="modals"></div>
+    <div ng-show="currentState==='launch'" ng-include="'samachar/launch.html'"></div>
+</body>
+</html>
