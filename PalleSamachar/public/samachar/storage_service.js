@@ -16,30 +16,13 @@ angular.module('samachar.mobile.services').factory('StorageService', ['$window',
             fac.removeObject('user_info');
         };
 
-        fac.getPositionInfo = function () {
-            return fac.getObject('position_info');
+         fac.getNewsInfo = function(){
+            return fac.getObject('news_info');
         };
 
-        fac.setPositionInfo = function (user) {
-            fac.setObject('position_info', user);
+        fac.setNewsInfo = function(news){
+            fac.setObject('news_info', news);
         };
-
-        fac.removePositionInfo = function () {
-            fac.removeObject('position_info');
-        };
-
-        fac.getEventInfo = function () {
-            return fac.getObject('Event_info');
-        };
-
-        fac.setEventInfo = function (user) {
-            fac.setObject('Event_info', user);
-        };
-
-        fac.removeEventInfo = function () {
-            fac.removeObject('Event_info');
-        };
-    
 		
 		fac.getObject =  function (key) {
             if($window.localStorage[key]){
@@ -57,24 +40,6 @@ angular.module('samachar.mobile.services').factory('StorageService', ['$window',
         fac.removeObject = function(key) {
             delete $window.localStorage[key];
         };
-
-        fac.getUpgradePlanInfo = function () {
-            return fac.getObject('upgrade_info');
-        };
-
-        fac.setUpgradePlanInfo = function (upgradePlan) {
-            fac.setObject('upgrade_info', upgradePlan);
-        };
-
-        fac.getCurrentPlanInfo = function () {
-            return fac.getObject('current_plan_info');
-        };
-
-        fac.setCurrentPlanInfo = function (currentPlan) {
-            fac.setObject('current_plan_info', currentPlan);
-        };
-
-
         
 
         return fac;

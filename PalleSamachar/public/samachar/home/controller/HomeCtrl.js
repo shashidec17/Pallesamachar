@@ -2,6 +2,8 @@ app.controller('MandalController', function ($rootScope, $scope, $state,$statePa
 
     var distMandalInfo = StorageService.getUserInfo('user_info');
    
+   var perPage = 10;
+
     var mandalWise = function(){
         var pageIndex = 0;
         $rootScope.loading = true;
@@ -13,12 +15,12 @@ app.controller('MandalController', function ($rootScope, $scope, $state,$statePa
                     "mandalId":distMandalInfo.mandalData.mandalId,
                     "mandalName":distMandalInfo.mandalData.mandalName,
                     "newsIndex":pageIndex,
-                    "perPage":10
-                },
+                    "perPage":perPage
+                }
         }).then(function (response) {
             if(response.data.statusCode == 200){
                 $scope.newsList = response.data.newsList;
-                console.log("newsList",$scope.newsList);
+               
             }else{
                 console.log("error in  news");
             }
@@ -32,6 +34,13 @@ app.controller('MandalController', function ($rootScope, $scope, $state,$statePa
 
     mandalWise();
 
+    $scope.viewNews = function(news){
+
+        StorageService.setNewsInfo(news);
+        $state.go("viewNews");
+
+    }
+
 
 });
 
@@ -43,6 +52,7 @@ app.controller('DistrictController', function ($rootScope, $scope, $state,$state
 
     var distMandalInfo = StorageService.getUserInfo('user_info');
 
+    var perPage = 10;
 
     var districtWise = function(){
         var pageIndex = 0;
@@ -53,14 +63,13 @@ app.controller('DistrictController', function ($rootScope, $scope, $state,$state
             data: {
                     "districtId":distMandalInfo.districtData.districtId,
                     "districtName":distMandalInfo.districtData.districtName,
-                    //"mandalsList":[distMandalInfo.mandalData],
                     "newsIndex":pageIndex,
-                    "perPage":10
+                    "perPage":perPage
                 },
         }).then(function (response) {
             if(response.data.statusCode == 200){
                 $scope.newsList = response.data.newsList;
-                console.log("newsList",$scope.newsList);
+              
             }else{
                 console.log("error in  news");
             }
@@ -72,5 +81,37 @@ app.controller('DistrictController', function ($rootScope, $scope, $state,$state
     }
 
     districtWise();
+
+     $scope.viewNews = function(news){
+
+        StorageService.setNewsInfo(news);
+        $state.go("viewNews");
+
+    }
+
+});
+
+
+
+
+
+
+app.controller('viewNewsController', function ($rootScope, $scope, $state,$stateParams, WebServices, StorageService) {
+
+    var newsInfo = StorageService.getUserInfo('news_info');
+    $scope.viewNews = {};
+    var viewNews = function(){
+       
+        $scope.viewNews = newsInfo;
+        console.log("view news : ",$scope.viewNews);
+    }
+
+    viewNews();
+
+     $scope.goBack = function(){
+
+       history.go(-1);
+
+    }
 
 });

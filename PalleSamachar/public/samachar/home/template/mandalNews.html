@@ -23,25 +23,10 @@
             <ul class="list-group">
                 <li>
                     <ul class="list-group">
-                        <!--<li ng-repeat="news in newsList" class="list-group-item" 
-                            style="margin-left: 10px; margin-right: 10px; background: #fff;border: 1px #EBEBEB solid;">
-                            <table>
-                                <tr>
-                                    <td style="width: 50%;">
-                                        <img ng-src="https://mytomcatapp-pallesamachar.rhcloud.com/psnews/uploads/news{{news.newsId}}.jpeg" 
-                                    style="height: 70px;width: 100px; background-color: #aaa;"/>
-                                        
-                                    </td>
-                                    <td style="width: 50%;">
-                                        <div><strong>{{news.newsDesc}}</strong></div>
-                                        <div style="color:#c7c7c7; font-size:12px;">{{news.createdDate}}</div>
-                                    </td>
-                                    
-                                </tr>
-                            </table>
-                        </li>-->
+
                          <li ng-repeat="news in newsList" class="list-group-item" 
-                            style="margin-left: 10px; margin-right: 10px; background: #F5F6FA;border: 1px #EBEBEB solid;">
+                            style="margin-left: 10px; margin-right: 10px; background: #F5F6FA;border: 1px #EBEBEB solid;"
+                            ng-click="viewNews(news)">
                             <table>
                                 <tr>
                                     <td style="width: 30%;">

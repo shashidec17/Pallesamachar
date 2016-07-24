@@ -8,5 +8,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
            url: '/districtnews',
            templateUrl: 'samachar/home/template/districtnews.html',
            controller: "DistrictController"
+       }).state('viewNews', {
+           url: '/viewNews',
+           templateUrl: 'samachar/home/template/viewnews.html',
+           controller: "viewNewsController"
        });
 });

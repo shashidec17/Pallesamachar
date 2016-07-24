@@ -1,0 +1,34 @@
+<div ui-content-for="menu-action">  
+    <div class="btn sidebar-toggle">
+        
+  </div>
+</div>
+<div ui-content-for="navbarAction">
+    <div ui-toggle="uiSidebarRight" class="btn">
+       
+    </div>
+</div>
+
+<div ui-content-for="title">
+    <span>{{viewNews.newsName}}</span>
+</div>
+
+<div class="scrollable">
+    <div class="scrollable-content scrolable_content_bg" style="background: #fafafa;">
+        <div class="list-group">
+            <table>
+                <tr>
+                    <td style="width: 100%;">
+                        <img ng-src="https://mytomcatapp-pallesamachar.rhcloud.com/psnews/uploads/news{{news.newsId}}.jpeg" 
+                    style="height: 70px;width: 100px; background-color: #aaa;"/>   
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 100%;">
+                        <div><strong>{{viewNews.newsDesc}}</strong></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
