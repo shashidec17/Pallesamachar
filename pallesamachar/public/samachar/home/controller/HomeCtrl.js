@@ -104,6 +104,7 @@ app.controller('viewNewsController', function ($rootScope, $scope, $state,$state
     var viewNews = function(){
        
         $scope.viewNews = newsInfo;
+
         console.log("view news : ",$scope.viewNews);
     }
 

@@ -1,11 +1,10 @@
-<div ui-content-for="menu-action">  
+<div ui-content-for="menu-action">
     <div class="btn sidebar-toggle">
-        
-  </div>
+        <a ng-click="goBack();" style="color: #fff;"><i class="fa fa-arrow-left"></i></a>
+    </div>
 </div>
 <div ui-content-for="navbarAction">
     <div ui-toggle="uiSidebarRight" class="btn">
-       
     </div>
 </div>
 
@@ -14,18 +13,29 @@
 </div>
 
 <div class="scrollable">
-    <div class="scrollable-content scrolable_content_bg" style="background: #fafafa;">
+    <div class="scrollable-content scrolable_content_bg" style="background: #EBEBEB;">
         <div class="list-group">
             <table>
                 <tr>
                     <td style="width: 100%;">
-                        <img ng-src="https://mytomcatapp-pallesamachar.rhcloud.com/psnews/uploads/news{{news.newsId}}.jpeg" 
-                    style="height: 70px;width: 100px; background-color: #aaa;"/>   
+                        <img ng-src="https://mytomcatapp-pallesamachar.rhcloud.com/psnews/uploads/news{{viewNews.newsId}}.jpeg"
+                            style="width: 100%; height: 200px; background-color: #aaa;" />
+                    </td>
+                </tr>
+                <tr style="padding: 10px;">
+                    <td style="width: 100%;">
+                        <br />
+                        <div style="padding-left: 30px; padding-right: 30px;"><strong>{{viewNews.newsName}}</strong></div>
+                    </td>
+                </tr>
+                <tr style="padding: 10px;">
+                    <td style="width: 100%;">
+                        <br />
                     </td>
                 </tr>
                 <tr>
                     <td style="width: 100%;">
-                        <div><strong>{{viewNews.newsDesc}}</strong></div>
+                        <div style="font-size: small; padding-left: 30px; padding-right: 30px;"><strong>{{viewNews.newsDesc}}</strong></div>
                     </td>
                 </tr>
             </table>
